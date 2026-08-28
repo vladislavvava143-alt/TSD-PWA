@@ -3,51 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
   <title>Складской Терминал Blum</title>
-  <link rel="manifest" href="manifest.json">
+
+  <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#E25D1D">
+
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+
   <style>
     html, body {
-      margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #F4F4F4;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #F4F4F4;
       transition: background-color 0.2s ease;
     }
+
     iframe {
-      width: 100%; height: 100%; border: none; display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
     }
   </style>
 </head>
+
 <body>
-  <iframe src="https://script.google.com/macros/s/AKfycbztTB6N7zSILDFXDatRNuTv9HcwaQc-7qQtxC0Y6O8yUitxoPe5k2h-ungwC525jhqVFw/exec" scrolling="no"></iframe>
+
+  <iframe
+    src="ТВОЯ_ССЫЛКА_НА_ОСНОВНОЕ_РАЗВЕРТЫВАНИЕ_GOOGLE_APPS_SCRIPT"
+    scrolling="no">
+  </iframe>
 
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
+        navigator.serviceWorker.register('./sw.js')
           .then(reg => console.log('Service Worker зарегистрирован!', reg))
           .catch(err => console.error('Ошибка Service Worker:', err));
       });
     }
 
-    const savedTheme = localStorage.getItem('warehouse_theme_preference') || 'light';
-    document.body.style.backgroundColor = savedTheme === 'dark' ? '#12100E' : '#F4F4F4';
-    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    const savedTheme =
+      localStorage.getItem('warehouse_theme_preference') || 'light';
+
+    document.body.style.backgroundColor =
+      savedTheme === 'dark' ? '#12100E' : '#F4F4F4';
+
+    const metaThemeColor =
+      document.querySelector('meta[name="theme-color"]');
+
     if (metaThemeColor) {
-      metaThemeColor.setAttribute('content', savedTheme === 'dark' ? '#12100E' : '#E25D1D');
+      metaThemeColor.setAttribute(
+        'content',
+        savedTheme === 'dark' ? '#12100E' : '#E25D1D'
+      );
     }
 
     window.addEventListener('message', (event) => {
       if (event.data && event.data.theme) {
+
         const theme = event.data.theme;
-        localStorage.setItem('warehouse_theme_preference', theme);
-        document.body.style.backgroundColor = theme === 'dark' ? '#12100E' : '#F4F4F4';
+
+        localStorage.setItem(
+          'warehouse_theme_preference',
+          theme
+        );
+
+        document.body.style.backgroundColor =
+          theme === 'dark' ? '#12100E' : '#F4F4F4';
+
         if (metaThemeColor) {
-          metaThemeColor.setAttribute('content', theme === 'dark' ? '#12100E' : '#E25D1D');
+          metaThemeColor.setAttribute(
+            'content',
+            theme === 'dark' ? '#12100E' : '#E25D1D'
+          );
         }
       }
     });
   </script>
+
 </body>
 </html>
