@@ -1,7 +1,7 @@
 {
-  "name": "Складской Терминал Blum",
-  "short_name": "Терминал Blum",
-  "description": "Приложение для инвентаризации склада Blum",
+  "name": "Складской Терминал",
+  "short_name": "Терминал",
+  "description": "Приложение для инвентаризации склада",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#F4F4F4",
